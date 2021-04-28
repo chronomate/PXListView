@@ -14,4 +14,7 @@ enum PXListViewDropHighlight
 	PXListViewDropAbove,
 	PXListViewDropBelow
 };
+
+#ifndef __cplusplus
 typedef NSUInteger PXListViewDropHighlight;
+#endif

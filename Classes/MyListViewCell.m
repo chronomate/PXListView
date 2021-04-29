@@ -51,7 +51,7 @@
 		[[NSColor selectedControlColor] set];
 	}
 	else {
-		[[NSColor whiteColor] set];
+		[[NSColor redColor] set];
     }
 
     //Draw the border and background

@@ -29,8 +29,13 @@
 @property (readonly,getter=isSelected) BOOL selected;
 @property (assign) PXListViewDropHighlight dropHighlight;
 
-+ (id)cellLoadedFromNibNamed:(NSString*)nibName reusableIdentifier:(NSString*)identifier;
-+ (id)cellLoadedFromNibNamed:(NSString*)nibName bundle:(NSBundle*)bundle reusableIdentifier:(NSString*)identifier;
++ (id)cellLoadedFromNibNamed:(NSString*)nibName
+          reusableIdentifier:(NSString*)identifier
+                       owner:(id)owner;
++ (id)cellLoadedFromNibNamed:(NSString *)nibName
+                      bundle:(NSBundle *)bundle
+          reusableIdentifier:(NSString*)identifier
+                       owner:(id)owner;
 
 - (id)initWithReusableIdentifier:(NSString*)identifier;
 - (void)prepareForReuse;

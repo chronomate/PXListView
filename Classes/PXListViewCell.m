@@ -23,19 +23,24 @@
 @synthesize listView = _listView;
 @synthesize row = _row;
 
-+ (id)cellLoadedFromNibNamed:(NSString*)nibName reusableIdentifier:(NSString*)identifier
++ (id)cellLoadedFromNibNamed:(NSString*)nibName
+          reusableIdentifier:(NSString*)identifier
+                       owner:(id)owner
 {
-    return [self cellLoadedFromNibNamed:nibName bundle:nil reusableIdentifier:identifier];
+    return [self cellLoadedFromNibNamed:nibName bundle:nil reusableIdentifier:identifier owner:owner];
 }
 
-+ (id)cellLoadedFromNibNamed:(NSString*)nibName bundle:(NSBundle*)bundle reusableIdentifier:(NSString*)identifier
++ (id)cellLoadedFromNibNamed:(NSString *)nibName
+                      bundle:(NSBundle *)bundle
+          reusableIdentifier:(NSString*)identifier
+                       owner:(id)owner
 {
     NSNib *cellNib = [[NSNib alloc] initWithNibNamed:nibName bundle:bundle];
     NSArray *objects = nil;
     
     id cell = nil;
     
-    [cellNib instantiateNibWithOwner:nil topLevelObjects:&objects];
+    [cellNib instantiateNibWithOwner:owner topLevelObjects:&objects];
     for(id object in objects) {
         if([object isKindOfClass:[self class]]) {
             cell = object;

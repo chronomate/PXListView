@@ -149,6 +149,10 @@ NSString * const PXListViewSelectionDidChange = @"PXListViewSelectionDidChange";
 		free(_cellYOffsets);
 		_cellYOffsets=NULL;
 	}
+    
+    if ([self.delegate respondsToSelector:@selector(listViewItemsDidChange:)]) {
+        [self.delegate listViewItemsDidChange:self];
+    }
 }
 
 - (NSUInteger)numberOfRows

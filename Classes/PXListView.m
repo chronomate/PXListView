@@ -651,11 +651,10 @@ NSString * const PXListViewSelectionDidChange = @"PXListViewSelectionDidChange";
 	
 	NSPoint newScrollPoint = rowRect.origin;
     
-    //Could we over-scroll?
-	if(NSMaxY(rowRect) > _totalHeight) {
-		newScrollPoint.y = _totalHeight - NSHeight(visibleRect);
-    }
-	
+    // Clamp to not reveal empty space
+    newScrollPoint.y = MIN(newScrollPoint.y,  _totalHeight - NSHeight(visibleRect));
+    newScrollPoint.y = MAX(newScrollPoint.y, 0);
+
 	[[self contentView] scrollToPoint:newScrollPoint];
 	[self reflectScrolledClipView:[self contentView]];
 }

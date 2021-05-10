@@ -104,10 +104,10 @@ static PXIsDragStartResult PXIsDragStart( NSEvent *startEvent, NSTimeInterval th
 #pragma mark -
 #pragma mark Keyboard Handling
 
-- (void)keyDown:(NSEvent *)theEvent
-{
-	[self interpretKeyEvents:[NSArray arrayWithObject:theEvent]];
-}
+//- (void)keyDown:(NSEvent *)theEvent
+//{
+//	[self interpretKeyEvents:[NSArray arrayWithObject:theEvent]];
+//}
 
 
 - (void)moveUp:(id)sender
@@ -507,6 +507,9 @@ static PXIsDragStartResult PXIsDragStart( NSEvent *startEvent, NSTimeInterval th
 	if( ![[self delegate] respondsToSelector: @selector(listView:acceptDrop:row:dropHighlight:)] )
 		return NO;
 	
+    PXListViewCell *oldCell = _dropRow == NSUIntegerMax ? nil : [self visibleCellForRow:_dropRow];
+    [oldCell setDropHighlight:PXListViewDropNowhere];
+
 	BOOL	accepted = [[self delegate] listView: self acceptDrop: sender row: _dropRow dropHighlight: _dropHighlight];
 	
 	_dropRow = 0;

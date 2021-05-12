@@ -202,6 +202,11 @@ NSString * const PXListViewSelectionDidChange = @"PXListViewSelectionDidChange";
 - (NSArray*)visibleCells
 {
 	NSRange visibleRange = [self visibleRange];
+    
+    if (visibleRange.location == NSUIntegerMax) {
+        return @[];
+    }
+    
 	NSUInteger firstIndex = 0;
 	for(PXListViewCell *cell in _cellsInViewHierarchy)
 	{
